@@ -1,19 +1,19 @@
 variable "collector_layer_name" {
   type        = string
   description = "Name of published collector layer"
-  default     = "opentelemetry-collector"
+  default     = "opentelemetry-collector1"
 }
 
 variable "sdk_layer_name" {
   type        = string
   description = "Name of published SDK layer"
-  default     = "opentelemetry-python-wrapper"
+  default     = "opentelemetry-python-wrapper1"
 }
 
 variable "function_name" {
   type        = string
   description = "Name of sample app function / API gateway"
-  default     = "lambda-python-awssdk-wrapper"
+  default     = "lambda-python-awssdk-wrapper1"
 }
 
 variable "architecture" {
@@ -25,7 +25,7 @@ variable "architecture" {
 variable "runtime" {
   type        = string
   description = "Python runtime version used for sample Lambda Function"
-  default     = "python3.10"
+  default     = "python3.12"
 }
 
 variable "tracing_mode" {
