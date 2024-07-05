@@ -4,20 +4,24 @@ go 1.21.0
 
 toolchain go1.22.1
 
+//replace github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsemfexporter v0.102.0 => /Users/wangzl/workspace/alpha/opentelemetry-collector-contrib/exporter/awsemfexporter
+//
+//replace github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsxrayexporter v0.102.0 => /Users/wangzl/workspace/alpha/opentelemetry-collector-contrib/exporter/awsxrayexporter
+
 require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsemfexporter v0.102.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsxrayexporter v0.102.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusremotewriteexporter v0.102.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/extension/sigv4authextension v0.102.0
 	github.com/stretchr/testify v1.9.0
-	go.opentelemetry.io/collector/component v0.102.1
-	go.opentelemetry.io/collector/exporter v0.102.1
+	go.opentelemetry.io/collector/component v0.103.0
+	go.opentelemetry.io/collector/exporter v0.103.0
 	go.opentelemetry.io/collector/exporter/loggingexporter v0.102.1
 	go.opentelemetry.io/collector/exporter/otlpexporter v0.102.1
 	go.opentelemetry.io/collector/exporter/otlphttpexporter v0.102.1
-	go.opentelemetry.io/collector/extension v0.102.1
+	go.opentelemetry.io/collector/extension v0.103.0
 	go.opentelemetry.io/collector/otelcol v0.102.1
-	go.opentelemetry.io/collector/receiver v0.102.1
+	go.opentelemetry.io/collector/receiver v0.103.0
 	go.opentelemetry.io/collector/receiver/otlpreceiver v0.102.1
 	go.uber.org/multierr v1.11.0
 )
@@ -66,11 +70,11 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/mostynb/go-grpc-compression v1.2.3 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/aws/awsutil v0.103.0 // indirect
-	github.com/open-telemetry/opentelemetry-collector-contrib/internal/aws/cwlogs v0.102.0 // indirect
+	github.com/open-telemetry/opentelemetry-collector-contrib/internal/aws/cwlogs v0.103.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/aws/metrics v0.103.0 // indirect
-	github.com/open-telemetry/opentelemetry-collector-contrib/internal/aws/xray v0.102.0 // indirect
-	github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal v0.102.0 // indirect
-	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/resourcetotelemetry v0.102.0 // indirect
+	github.com/open-telemetry/opentelemetry-collector-contrib/internal/aws/xray v0.103.0 // indirect
+	github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal v0.103.0 // indirect
+	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/resourcetotelemetry v0.103.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/prometheus v0.103.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/prometheusremotewrite v0.102.0 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
@@ -81,7 +85,7 @@ require (
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/prometheus/prometheus v0.53.0 // indirect
 	github.com/rs/cors v1.11.0 // indirect
-	github.com/shirou/gopsutil/v3 v3.24.4 // indirect
+	github.com/shirou/gopsutil/v3 v3.24.5 // indirect
 	github.com/shoenig/go-m1cpu v0.1.6 // indirect
 	github.com/spf13/cobra v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
@@ -94,7 +98,7 @@ require (
 	github.com/tklauser/numcpus v0.8.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	go.opentelemetry.io/collector v0.102.1 // indirect
+	go.opentelemetry.io/collector v0.103.0 // indirect
 	go.opentelemetry.io/collector/config/configauth v0.102.1 // indirect
 	go.opentelemetry.io/collector/config/configcompression v1.10.0 // indirect
 	go.opentelemetry.io/collector/config/configgrpc v0.102.1 // indirect

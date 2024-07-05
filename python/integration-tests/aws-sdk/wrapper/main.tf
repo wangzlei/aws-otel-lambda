@@ -40,6 +40,10 @@ module "test-function" {
 
   environment_variables = {
     AWS_LAMBDA_EXEC_WRAPPER = "/opt/otel-instrument"
+    OTEL_AWS_APPLICATION_SIGNALS_ENABLED = "true"
+    OTEL_PYTHON_DISTRO = "aws_distro"
+    OTEL_PYTHON_CONFIGURATOR = "aws_configurator"
+    OTEL_AWS_APPLICATION_SIGNALS_EXPORTER_ENDPOINT = "http://localhost:4316/v1/metrics"
   }
 
   tracing_mode = var.tracing_mode

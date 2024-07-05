@@ -5,19 +5,147 @@ receivers:
         endpoint: "localhost:4317"
       http:
         endpoint: "localhost:4318"
+  otlp/application_signals:
+    protocols:
+      http:
+        endpoint: "localhost:4316"
+        include_metadata: false
+        logs_url_path: /v1/logs
+        max_request_body_size: 0
+        metrics_url_path: /v1/metrics
+        traces_url_path: /v1/traces
 
 exporters:
   logging:
+    verbosity: detailed
   awsxray:
+  awsemf/application_signals:
+    detailed_metrics: false
+    dimension_rollup_option: NoDimensionRollup
+    eks_fargate_container_insights_enabled: false
+    endpoint: ""
+    log_group_name: /aws/application-signals/data
+    log_retention: 0
+    log_stream_name: ""
+    max_retries: 2
+    metric_declarations:
+      - dimensions:
+          - - Environment
+            - Operation
+            - Service
+          - - Environment
+            - Service
+        label_matchers:
+          - label_names:
+              - Telemetry.Source
+            regex: ^(ServerSpan|LocalRootSpan)$
+            separator: ;
+        metric_name_selectors:
+          - Latency
+          - Fault
+          - Error
+      - dimensions:
+          - - Environment
+            - Operation
+            - RemoteEnvironment
+            - RemoteOperation
+            - RemoteResourceIdentifier
+            - RemoteResourceType
+            - RemoteService
+            - Service
+          - - Environment
+            - Operation
+            - RemoteEnvironment
+            - RemoteOperation
+            - RemoteService
+            - Service
+          - - Environment
+            - Operation
+            - RemoteOperation
+            - RemoteResourceIdentifier
+            - RemoteResourceType
+            - RemoteService
+            - Service
+          - - Environment
+            - Operation
+            - RemoteOperation
+            - RemoteService
+            - Service
+          - - Environment
+            - RemoteEnvironment
+            - RemoteService
+            - Service
+          - - Environment
+            - RemoteService
+            - Service
+          - - Environment
+            - RemoteEnvironment
+            - RemoteOperation
+            - RemoteResourceIdentifier
+            - RemoteResourceType
+            - RemoteService
+            - Service
+          - - Environment
+            - RemoteEnvironment
+            - RemoteOperation
+            - RemoteService
+            - Service
+          - - Environment
+            - RemoteOperation
+            - RemoteResourceIdentifier
+            - RemoteResourceType
+            - RemoteService
+            - Service
+          - - Environment
+            - RemoteOperation
+            - RemoteService
+            - Service
+          - - Environment
+            - RemoteResourceIdentifier
+            - RemoteResourceType
+            - RemoteService
+            - Service
+          - - RemoteResourceIdentifier
+            - RemoteResourceType
+            - RemoteService
+          - - RemoteService
+        label_matchers:
+          - label_names:
+              - Telemetry.Source
+            regex: ^(ClientSpan|ProducerSpan|ConsumerSpan)$
+            separator: ;
+        metric_name_selectors:
+          - Latency
+          - Fault
+          - Error
+    namespace: ApplicationSignals
+    no_verify_ssl: false
+    num_workers: 8
+    output_destination: cloudwatch
+    proxy_address: ""
+    request_timeout_seconds: 30
+    resource_arn: ""
+    resource_to_telemetry_conversion:
+      enabled: false
+    retain_initial_value_of_delta_metric: false
+    role_arn: ""
+    version: "1"
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
       exporters: [awsxray]
-    metrics:
-      receivers: [otlp]
-      exporters: [logging]
+    #    metrics:
+    #      receivers: [otlp]
+    #      exporters: [logging]
+    metrics/appsignals:
+      receivers: [otlp/application_signals]
+      exporters: [awsemf/application_signals, logging]
   telemetry:
-    metrics:
-      address: localhost:8888
+    logs:
+      development: false
+      disable_caller: false
+      disable_stacktrace: false
+      encoding: console
+      level: debug
