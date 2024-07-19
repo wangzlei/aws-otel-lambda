@@ -19,6 +19,16 @@ exporters:
   logging:
     verbosity: detailed
   awsxray:
+    index_all_attributes: false
+    indexed_attributes:
+      - aws.local.service
+      - aws.local.operation
+      - aws.local.environment
+      - aws.remote.service
+      - aws.remote.operation
+      - aws.remote.environment
+      - aws.remote.resource.identifier
+      - aws.remote.resource.type
   awsemf/application_signals:
     detailed_metrics: false
     dimension_rollup_option: NoDimensionRollup

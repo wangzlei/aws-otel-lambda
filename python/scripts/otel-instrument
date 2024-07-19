@@ -22,6 +22,12 @@ if [ -z ${OTEL_PROPAGATORS} ]; then
     export OTEL_PROPAGATORS="tracecontext,baggage,xray";
 fi
 
+export OTEL_AWS_APPLICATION_SIGNALS_ENABLED="true"
+export OTEL_PYTHON_DISTRO="aws_distro"
+export OTEL_PYTHON_CONFIGURATOR="aws_configurator"
+export OTEL_AWS_APPLICATION_SIGNALS_EXPORTER_ENDPOINT="http://localhost:4316/v1/metrics"
+export OTEL_METRIC_EXPORT_INTERVAL="2000"
+
 # - Call the upstream configure OTel script
 
 source /opt/otel-instrument-upstream-lambda
